@@ -1,6 +1,6 @@
-# top-npm-users-server
+# npm-tonic-app
 
-server-side component for the [npm-top-users addon](https://www.npmjs.com/package/npm-addon-npm-top-users).
+server-side component for the [npm-tonic-app](https://www.npmjs.com/package/npm-addon-tonic).
 
 ## what is this?
 

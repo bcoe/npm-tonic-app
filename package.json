@@ -1,33 +1,32 @@
 {
-  "name": "top-npm-users-server",
+  "name": "npm-tonic-app",
   "version": "1.0.0",
-  "description": "server for top-npm-users addon",
+  "description": "server for tonic addon",
   "main": "server.js",
   "scripts": {
     "test": "standard"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bcoe/top-npm-users-server.git"
+    "url": "git+https://github.com/bcoe/npm-tonic-app.git"
   },
   "keywords": [
-    "npm-top-users",
+    "npm-tonic-app",
     "addon",
     "server"
   ],
   "author": "Ben Coe <ben@npmjs.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/bcoe/top-npm-users-server/issues"
+    "url": "https://github.com/bcoe/npm-tonic-app/issues"
   },
-  "homepage": "https://github.com/bcoe/top-npm-users-server#readme",
+  "homepage": "https://github.com/bcoe/npm-tonic-app#readme",
   "devDependencies": {
     "standard": "^6.0.8"
   },
   "dependencies": {
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
-    "redis": "^2.5.3",
-    "request": "^2.72.0"
+    "redis": "^2.5.3"
   }
 }

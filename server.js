@@ -5,11 +5,11 @@ corresponds to the following meta-information:
 {
   "type": "badge plus",
   "email": "ben@npmjs.com",
-  "name": "npm Top Users",
-  "homepage": "http://git.io/npm-top",
-  "description": "indicate whether a module was built by a top npm user",
-  "callback": "http://top-npm-users-server.herokuapp.com/auth",
-  "webhook": "http://top-npm-users-server.herokuapp.com/webhook"
+  "name": "Tonic",
+  "homepage": "http://npmjs.com",
+  "description": "try out a package in the browser",
+  "callback": "http://npm-tonic-app.herokuapp.com/auth",
+  "webhook": "http://npm-tonic-app.herokuapp.com/webhook"
 }
 
 which was generated, and published to npm using:
@@ -21,7 +21,6 @@ var crypto = require('crypto')
 var express = require('express')
 var app = express()
 var client = require('redis').createClient(process.env.REDISTOGO_URL || 'redis://127.0.01:6379')
-var topUsers = require('./top-users')
 
 app.use(bodyParser.text({
   type: 'application/json'
@@ -72,7 +71,20 @@ app.post('/webhook', function (req, res) {
       res.status(401).send('invalid signature')
     } else {
       console.info('signature validated')
-      return topUsers (body, req, res)
+      res.status(200).send({
+        rows: [
+          {
+            image: {
+              text: '',
+              url: 'http://localhost:8081/static/images/tonicdev.ico'
+            },
+            link: {
+              url: 'https://tonicdev.com/npm/' + body.package,
+              text: 'test ' + body.package + ' in the browser'
+            }
+          }
+        ]
+      })
     }
   })
 })
@@ -92,6 +104,6 @@ function hash (payload, secret) {
 
 // start the server.
 var port = process.env.PORT || 5555
-var server = app.listen(port, function () {
+app.listen(port, function () {
   console.info('server listening on ', port)
 })
